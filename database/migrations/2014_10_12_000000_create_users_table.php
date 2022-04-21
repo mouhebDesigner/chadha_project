@@ -21,9 +21,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['admin', 'passager', 'conducteur']);
-            $table->enum('genre', ['male', 'female']);
             $table->biginteger('numtel');
-            $table->date('date_naissance');
+            $table->string('city')->nullable();
+            $table->integer('codePostal')->nullable();
             $table->text('photo')->nullable();
             $table->boolean('approuver')->nullable();
             $table->rememberToken();

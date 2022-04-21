@@ -19,9 +19,12 @@
     <!-- Place favicon.ico in the root directory -->
     <link rel="stylesheet" href="{{ asset('front/assets/plugins/OwlCarousel/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('front/main/css/style.css') }}">
+    <style>
+       
+    </style>
 </head>
 
-<body class="theme-1">
+<body class="theme-1"  oncontextmenu="return false">
 
     @include('includes.header')
     @yield('content')

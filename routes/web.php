@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\TrajetController;
+use App\Http\Controllers\Admin\PassagerController;
+use App\Http\Controllers\Admin\ConducteurController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('admin')->group(function () {
+    Route::get('passagers', [PassagerController::class, 'index']);
+    Route::get('conducteurs', [ConducteurController::class, 'index']);
+    Route::get('trajets', [TrajetController::class, 'index']);
+    Route::get('users', [UserController::class, 'index']);
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

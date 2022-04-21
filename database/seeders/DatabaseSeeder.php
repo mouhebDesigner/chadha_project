@@ -18,12 +18,10 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         DB::table('users')->insert([
             [
-                "nom" => "bouabdellah",
+                "nom" => "khlifi",
                 "prenom" => "chadha",
                 "email" => "chadha@gmail.com",
                 "numtel" => "12345678",
-                "date_naissance" => "1999-10-15",
-                "genre" => "female",
                 "role" => "admin",
                 "password" => Hash::make("adminadmin"),
             ]

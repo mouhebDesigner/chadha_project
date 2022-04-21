@@ -37,7 +37,7 @@
                                         <th>nom</th>
                                         <th>prenom</th>
                                         <th>email</th>
-                                        <th>grade</th>
+                                        <th>role</th>
                                         <th>numéro de téléphone</th>
                                         <th>Actions</th>
                                     </tr>

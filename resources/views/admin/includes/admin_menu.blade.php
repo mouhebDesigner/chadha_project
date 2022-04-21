@@ -5,7 +5,7 @@
         <a href="{{ url('home') }}" class="nav-link ">
             <i class="nav-icon fas fa-home"></i>
             <p>
-                Projets
+                Accueil
                 <i class="right fas fa-angle-left"></i>
             </p>
         </a>
@@ -15,7 +15,34 @@
         <a href="{{ url('admin/users') }}" class="nav-link ">
             <i class="nav-icon fas fa-user"></i>
             <p>
-            Liste d'inscription
+            Inscriptions
+            <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+    </li>
+    <li class="nav-item @if(Request::is('admin/passagers*')) active @endif">
+        <a href="{{ url('admin/passagers') }}" class="nav-link ">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+            Passagers
+            <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+    </li>
+    <li class="nav-item @if(Request::is('admin/conducteurs*')) active @endif">
+        <a href="{{ url('admin/conducteurs') }}" class="nav-link ">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+            Conducteurs
+            <i class="right fas fa-angle-left"></i>
+            </p>
+        </a>
+    </li>
+    <li class="nav-item @if(Request::is('admin/trajets*')) active @endif">
+        <a href="{{ url('admin/trajets') }}" class="nav-link ">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+            Trajets
             <i class="right fas fa-angle-left"></i>
             </p>
         </a>
