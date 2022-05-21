@@ -35,9 +35,11 @@
                                     <div class="col-md-12">
                                         <div class="d-flex justify-content-between">
                                             <h3 class="m-0">Liste des trajets</h3>
-                                            <a href="{{ url('admin/trajets/create') }}" class="add_button" title="ajouter un trajets">
-                                                <i class="fa fa-plus"></i>
-                                            </a>
+                                            @if(Auth::user()->isConducteur())
+                                                <a href="{{ route('conducteur.trajets.create') }}" class="add_button" title="ajouter un trajets">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +67,6 @@
                                                         <th>Destination</th>
                                                         <th>Date</th>
                                                         <th>Prix</th>
-                                                        <th>Conducteur</th>
                                                         <th>
                                                             Action
                                                         </th>
@@ -80,18 +81,17 @@
                                                             <td>{{ $trajet->destination }}</td>
                                                             <td>{{ $trajet->date }}</td>
                                                             <td>{{ $trajet->prix }}</td>
-                                                            <td>{{ $trajet->conducteur->nom }} {{ $trajet->conducteur->prenom }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
                                                                     
-                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="concour" title="Supprimer concour" data-url="{{ route('admin.trajets.destroy', ['concour' => $trajet]) }}" >
+                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="concour" title="Supprimer concour" data-url="{{ route('conducteur.trajets.destroy', ['trajet' => $trajet]) }}" >
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <a href="{{ url('admin/trajets/'.$trajet->id.'/edit') }}" data-model="concour" title="Modifier concour" class="edit-confirm btn-edit">
+                                                                    <a href="{{ url('conducteur/trajets/'.$trajet->id.'/edit') }}" data-model="concour" title="Modifier concour" class="edit-confirm btn-edit">
                                                                         <i class="fa fa-pen"></i>
                                                                     </a>
 
-                                                                    <a href="{{ url('admin/trajets/'.$trajet->id) }}"  title="Voir détail" class="btn-edit">
+                                                                    <a href="{{ url('conducteur/trajets/'.$trajet->id) }}"  title="Voir détail" class="btn-edit">
                                                                         <i class="fa fa-info"></i>
                                                                     </a>
                                                                  

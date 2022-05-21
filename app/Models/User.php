@@ -18,9 +18,14 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        "nom",
+        "prenom",
+        "email",
+        "password",
+        "role",
+        "numtel",
+        "city",
+        "codePostal"
     ];
 
     /**
@@ -45,8 +50,24 @@ class User extends Authenticatable
     public function isAdmin(){
         return Auth::user()->role == "admin";
     }
+    public function isConducteur(){
+        return Auth::user()->role == "conducteur";
+    }
 
     public function trajets(){
         return $this->hasMany(Trajet::class);
     }
+
+    public function reservations(){
+        return $this->belongsToMany(Trajet::class, 'participants', 'user_id', 'trajet_id');
+    }
+    
+    public function reservationCount(){
+        $count = 0;
+        foreach($this->trajets()->get() as $trajet){
+            $count += $trajet->reservations()->count();
+        }
+        return $count;
+    }
+
 }

@@ -8,8 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Trajet extends Model
 {
     use HasFactory;
-
-    public function conducteur(){
+    protected $fillable = [
+        "source",
+        "destination",
+        "date",
+        "heure",
+        "prix",
+        "user_id"
+    ];
+    
+    public function user(){
         return $this->belongsTo(User::class);
+    }
+    
+    public function reservations(){
+        return $this->belongsToMany(User::class, 'participants', 'trajet_id', 'user_id');
     }
 }

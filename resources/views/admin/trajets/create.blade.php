@@ -9,7 +9,7 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Ajouter un concours
+                Ajouter un trajet
             </h1>
         </section>
         <section class="content">
@@ -22,80 +22,50 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ url('admin/concours') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('conducteur.trajets.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="titre">Titre</label>
-                                    <input type="text" class="form-control" name="titre" value="{{ old('titre') }}"
-                                        id="titre" placeholder="Saisir titre de concours">
-                                    @error('titre')
+                                    <label for="source">Source</label>
+                                    <input type="text" class="form-control" name="source" value="{{ old('source') }}"
+                                        id="source" placeholder="Saisir source de concours">
+                                    @error('source')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="description">description</label>
-                                    <textarea class="form-control" name="description" value="{{ old('description') }}"
-                                        id="description"
-                                        placeholder="Saisir libellé de concours">{{ old('description') }}</textarea>
-                                    @error('description')
+                                    <label for="destination">destination</label>
+                                    <input type="text" class="form-control" name="destination" value="{{ old('destination') }}"
+                                        id="destination" placeholder="Saisir destination de concours">
+                                    @error('destination')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            
+                                <div class="form-group">
+                                    <label for="date">Date de départ</label>
+                                    <input type="date" class="form-control" name="date"
+                                        value="{{ old('date') }}" id="date"
+                                        placeholder="Saisir date de concours">
+                                    @error('date')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="date_debut">Date de début</label>
-                                    <input type="date" class="form-control" name="date_debut"
-                                        value="{{ old('date_debut') }}" id="date_debut"
-                                        placeholder="Saisir date_debut de concours">
-                                    @error('date_debut')
+                                    <label for="heure">Heure de départ</label>
+                                    <input type="time" class="form-control" name="heure"
+                                        value="{{ old('heure') }}" id="heure"
+                                        placeholder="Saisir heure de concours">
+                                    @error('heure')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="date_fin">Date de fin</label>
-                                    <input type="date" class="form-control" name="date_fin"
-                                        value="{{ old('date_fin') }}" id="date_fin"
-                                        placeholder="Saisir date_fin de concours">
-                                    @error('date_fin')
-                                    <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="documents">Documents (PDF)</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" name="documents[]" class="custom-file-input" onchange="javascript:updateDocument()"  id="documents" multiple="">
-                                            <label class="custom-file-label" id="documentName" for="documents">Choisir documents</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Télécharger</span>
-                                        </div>
-                                    </div>
-                                    @error('documents')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="images">Images</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" name="images[]" class="custom-file-input" onchange="javascript:updateImage()" id="images" multiple="">
-                                            <label class="custom-file-label" id="imageName" for="images">Choisir images</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Télécharger</span>
-                                        </div>
-                                    </div>
-                                    @error('images')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
-                                
                                 
                                 <div class="form-group">
                                     <label for="prix">Prix</label>
-                                    <input type="text" class="form-control" name="prix" value="{{ old('prix') }}"
-                                        id="prix" placeholder="Saisir prix de concours">
+                                    <input type="number" class="form-control" name="prix" value="{{ old('prix') }}"
+                                        id="prix" placeholder="Saisir prix de trajet">
                                     @error('prix')
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror

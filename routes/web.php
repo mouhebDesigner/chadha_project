@@ -21,10 +21,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('passagers', [PassagerController::class, 'index']);
     Route::get('conducteurs', [ConducteurController::class, 'index']);
-    Route::get('trajets', [TrajetController::class, 'index']);
+    Route::resource('trajets', TrajetController::class)->only('index', 'show');
+    Route::get('users', [UserController::class, 'index']);
+});
+Route::prefix('conducteur')->name('conducteur.')->group(function () {
+    Route::resource('trajets', TrajetController::class);
+    Route::get('reservations', [ReservationController::class, 'index']);
     Route::get('users', [UserController::class, 'index']);
 });
 Auth::routes();
