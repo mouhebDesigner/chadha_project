@@ -67,6 +67,7 @@
                                                         <th>Destination</th>
                                                         <th>Date</th>
                                                         <th>Prix</th>
+                                                        <th>Nombre de passager</th>
                                                         <th>
                                                             Action
                                                         </th>
@@ -81,18 +82,19 @@
                                                             <td>{{ $trajet->destination }}</td>
                                                             <td>{{ $trajet->date }}</td>
                                                             <td>{{ $trajet->prix }}</td>
+                                                            <td>{{ $trajet->nbr_passager_max }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
                                                                     
-                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="concour" title="Supprimer concour" data-url="{{ route('conducteur.trajets.destroy', ['trajet' => $trajet]) }}" >
+                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="trajet" title="Supprimer trajet" data-url="{{ route('conducteur.trajets.destroy', ['trajet' => $trajet]) }}" >
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
-                                                                    <a href="{{ url('conducteur/trajets/'.$trajet->id.'/edit') }}" data-model="concour" title="Modifier concour" class="edit-confirm btn-edit">
+                                                                    <a href="{{ route('conducteur.trajets.edit', ['trajet' =>$trajet]) }}" data-model="trajet" title="Modifier trajet" class="edit-confirm btn-edit">
                                                                         <i class="fa fa-pen"></i>
                                                                     </a>
 
-                                                                    <a href="{{ url('conducteur/trajets/'.$trajet->id) }}"  title="Voir détail" class="btn-edit">
-                                                                        <i class="fa fa-info"></i>
+                                                                    <a href="{{ route('conducteur.trajets.show', ['trajet' => $trajet]) }}" style="width: max-content; padding: 10px 10px;"  title="Voir détail" class="btn-edit">
+                                                                        Voir Passager
                                                                     </a>
                                                                  
                                                                 </div>

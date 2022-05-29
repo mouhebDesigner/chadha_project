@@ -79,7 +79,7 @@
                                 </li>
                             </ul>
                             <div class="my-2 my-lg-0">
-                                <a href="sign-up.html" class="button button-light big">Become a Driver</a>
+                                <a href="{{ url('register') }}" class="button button-light big">Devenir conducteur</a>
                             </div>
                         </div>
                     </nav>

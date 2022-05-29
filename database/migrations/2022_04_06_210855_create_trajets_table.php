@@ -19,6 +19,7 @@ class CreateTrajetsTable extends Migration
             $table->string('destination');
             $table->date('date');
             $table->string('heure');
+            $table->integer('nbr_passager_max');
             $table->float('prix');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

@@ -33,10 +33,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="d-flex justify-content-between">
-                                            <h3 class="m-0">Liste des enseignants</h3>
-                                            <a href="{{ url('admin/enseignants/create') }}" class="add_button" title="ajouter un enseignant">
-                                                <i class="fa fa-plus"></i>
-                                            </a>
+                                            <h3 class="m-0">Liste des reservations</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -51,10 +48,13 @@
                                                 <thead>
                                                     <tr>
                                                         <th>
-                                                            Nom
+                                                            Source
                                                         </th>
                                                         <th>
-                                                            Prénom
+                                                            Destination
+                                                        </th>
+                                                        <th>
+                                                            Nom de passager
                                                         </th>
                                                         <th>
                                                             Email
@@ -63,7 +63,7 @@
                                                             Téléphone
                                                         </th>
                                                         <th>
-                                                            Spécialité  
+                                                            Status
                                                         </th>
                                                         <th>
                                                             Action
@@ -71,30 +71,32 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($enseignants as $enseignant)
+                                                    @foreach($trajets as $trajet)
+                                                        @foreach($trajet->reservations()->get() as $reservation)
                                                         <tr>
-                                                            <td>{{ $enseignant->nom }}</td>
-                                                            <td>{{ $enseignant->prenom }}</td>
-                                                            <td>{{ $enseignant->email }}</td>
-                                                            <td>{{ $enseignant->created_at }}</td>
-                                                            <td>{{ $enseignant->updated_at }}</td>
+                                                            <td>{{ $trajet->source }}</td>
+                                                            <td>{{ $trajet->destination }}</td>
+                                                            <td>{{ $reservation->nom }} {{ $reservation->prenom }}</td>
+                                                            <td>{{ $reservation->email }}</td>
+                                                            <td>{{ $reservation->numtel }}</td>
+                                                            <td>{{ $reservation->pivot->status }}</td>
                                                             <td>
                                                                 <div class="d-flex justify-content-around">
-                                                                    
-                                                                    <button type="submit" class="btn-delete delete-confirm" data-model="enseignant" data-url="{{ route('admin.enseignants.destroy', ['enseignant' => $enseignant]) }}" >
-                                                                        <i class="fa fa-trash"></i>
+                                                                    <button type="submit" style="width:max-content; padding: 10px 10px; line-height: 10px" class="btn-delete delete-confirm" data-model="trajet" title="Supprimer trajet" data-url="{{ route('conducteur.trajets.destroy', ['trajet' => $trajet]) }}" >
+                                                                        Accepter
                                                                     </button>
-                                                                    <a href="{{ url('admin/enseignants/'.$enseignant->id.'/edit') }}" data-model="enseignant" class="btn-edit edit-confirm">
-                                                                        <i class="fa fa-pen"></i>
+                                                                    <a href="{{ route('conducteur.trajets.edit', ['trajet' =>$trajet]) }}" style="width:  max-content; padding: 10px 10px" data-model="trajet" title="Modifier trajet" class="edit-confirm btn-edit">
+                                                                        Refuser
                                                                     </a>
+                                                                    
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                        @endforeach
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                             <div class="d-flex justify-content-center">
-                                                {{ $enseignants->links() }}
                                             </div>
                                         </div>
                                     </div>

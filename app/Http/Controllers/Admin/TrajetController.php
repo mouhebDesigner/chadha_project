@@ -7,9 +7,14 @@ use App\Models\Trajet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TrajetRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TrajetController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +23,13 @@ class TrajetController extends Controller
     public function index(){
         $trajets = Auth::user()->trajets()->paginate(10);
        
+        if(session('created')){
+            Alert::success('Success Title', session('created'));
+        }
+        if(session('updated')){
+            Alert::success('Success Title', session('updated'));
+        }
+
         if(Auth::user()->isAdmin()){
             
             $trajets = Trajet::paginate(10);
@@ -54,9 +66,12 @@ class TrajetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Trajet $trajet)
     {
-        //
+        $passagers = $trajet->reservations()->get();
+
+
+        return view('admin.trajets.show', compact('passagers'));
     }
 
     /**
@@ -65,9 +80,10 @@ class TrajetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Trajet $trajet)
     {
-        //
+        return view('admin.trajets.edit', compact('trajet'));
+
     }
 
     /**
@@ -77,9 +93,11 @@ class TrajetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Trajet $trajet)
     {
-        //
+        $trajet->update($request->all());
+
+        return redirect('conducteur/trajets')->with('updated', 'Le trajet a été modifié avec succée');
     }
 
     /**
@@ -88,8 +106,12 @@ class TrajetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trajet $trajet)
     {
-        //
+        $trajet->delete();
+
+        return response()->json([
+            "deleted" => "Trajet a été supprimé avec succée"
+        ]);
     }
 }

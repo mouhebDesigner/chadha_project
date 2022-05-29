@@ -14,7 +14,8 @@ class Trajet extends Model
         "date",
         "heure",
         "prix",
-        "user_id"
+        "user_id",
+        "nbr_passager_max"
     ];
     
     public function user(){
@@ -22,6 +23,6 @@ class Trajet extends Model
     }
     
     public function reservations(){
-        return $this->belongsToMany(User::class, 'participants', 'trajet_id', 'user_id');
+        return $this->belongsToMany(User::class, 'participants', 'trajet_id', 'user_id')->withPivot('nbrPassager', 'status');
     }
 }
