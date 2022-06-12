@@ -31,29 +31,17 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
-                    <h4>Useful links</h4>
+                    <h4>Menu</h4>
                     <nav class="footer-navigation">
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="our-vehicles.html">Our vehicles</a></li>
-                            <li><a href="our-services.html">Services</a></li>
-                            <li><a href="packages.html">Packages</a></li>
-                            <li><a href="sign-in.html">Login</a></li>
-                            <li><a href="sign-up.html">Register</a></li>
-                            <li><a href="index.html">Blog</a></li>
-                            <li><a href="index.html">Testimonials</a></li>
+                            <li><a href="{{ url('/') }}">Acceuil</a></li>
+                            <li><a href="{{ url('trajets') }}">Trajets</a></li>
+                            <li><a href="{{ url('propos') }}">A propos</a></li>
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ url('contact') }}">Contact</a></li>
                         </ul>
-                        <ul>
-                            <li><a href="ride-with-cabgo.html">Ride</a></li>
-                            <li><a href="my-driver-dashboard.html">Drive</a></li>
-                            <li><a href="sign-up.html">Become a Driver</a></li>
-                            <li><a href="#">Terms &amp; Conditions</a></li>
-                            <li><a href="#">Press</a></li>
-                            <li><a href="contact-us.html">Help</a></li>
-                            <li><a href="#">Privecy policy</a></li>
-                            <li><a href="#">Cookies policy</a></li>
-                        </ul>
+                        
                     </nav>
                 </div>
                 <div class="col-lg-3 col-sm-6">
@@ -72,8 +60,7 @@
                         <a href="#"><img src="assets/images/icon/apple-store.jpg" alt="Apple store"></a>
                     </div>
                     <div class="cta-button">
-                        <a href="my-driver-dashboard.html" class="button button-dark">Become a Driver</a>
-                        <a href="ride-with-cabgo.html" class="button button-dark">Ride with CarrGo</a>
+                        <a href="{{ route('register') }}" class="button button-dark">Devenir conducteur</a>
                     </div>
                 </div>
             </div>

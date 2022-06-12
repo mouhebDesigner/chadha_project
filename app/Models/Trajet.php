@@ -23,6 +23,6 @@ class Trajet extends Model
     }
     
     public function reservations(){
-        return $this->belongsToMany(User::class, 'participants', 'trajet_id', 'user_id')->withPivot('nbrPassager', 'status');
+        return $this->belongsToMany(User::class, 'participants', 'trajet_id', 'user_id')->withPivot('id', 'nbrPassager', 'status');
     }
 }

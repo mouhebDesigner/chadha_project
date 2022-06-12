@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->integer('codePostal')->nullable();
             $table->text('photo')->nullable();
+            $table->string('car_photo')->nullable();
+            $table->string('photo')->nullable();
             $table->boolean('approuver')->nullable();
             $table->rememberToken();
             $table->timestamps();

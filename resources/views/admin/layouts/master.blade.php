@@ -98,6 +98,74 @@
                   }
               });
           });
+          $(".accepter-confirm").on('click', function(e){
+          e.preventDefault();
+          var url = $(this).data('url');
+          console.log($('meta[name=csrf-token]').attr('content'));
+          swal({
+                  title: "êtes vous sûr?",
+                  text: "Voulez vous accepter cette "+$(this).data('model'),
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+              })
+              .then((willDelete) => {
+                  if (willDelete) {
+                      var data = {
+                          "_token" : $('meta[name="csrf-token"]').attr('content'),
+                      };
+                      $.ajax({
+                          type: "PUT",
+                          url: url,
+                          data: data,
+                          success: function(response){
+                              console.log(response);
+                              swal(response.deleted, {
+                                  icon: "success",
+                              }).then((result) => {
+                                  location.reload();
+                              });
+                          }
+                      })
+                  } else {
+                      swal("Votre action est annulé");
+                  }
+              });
+          });
+          $(".refuser-confirm").on('click', function(e){
+          e.preventDefault();
+          var url = $(this).data('url');
+          console.log($('meta[name=csrf-token]').attr('content'));
+          swal({
+                  title: "êtes vous sûr?",
+                  text: "Voulez vous refuser cette "+$(this).data('model'),
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+              })
+              .then((willDelete) => {
+                  if (willDelete) {
+                      var data = {
+                          "_token" : $('meta[name="csrf-token"]').attr('content'),
+                      };
+                      $.ajax({
+                          type: "PUT",
+                          url: url,
+                          data: data,
+                          success: function(response){
+                              console.log(response);
+                              swal(response.deleted, {
+                                  icon: "success",
+                              }).then((result) => {
+                                  location.reload();
+                              });
+                          }
+                      })
+                  } else {
+                      swal("Votre action est annulé");
+                  }
+              });
+          });
       });
 
     updateDocument = function() {

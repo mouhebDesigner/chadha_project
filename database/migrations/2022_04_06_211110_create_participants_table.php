@@ -17,7 +17,7 @@ class CreateParticipantsTable extends Migration
             $table->id();
             $table->string('destination');
             $table->integer('nbrPassager');
-            $table->enum('status', ['attente', 'accepter', 'refuser'])->nullable();
+            $table->enum('status', ['attente', 'accepter', 'refuser']);
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('trajet_id')->constrained('trajets')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

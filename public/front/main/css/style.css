@@ -2105,3 +2105,15 @@ footer.theme-2 {
   font-size: 16px;
   font-weight: 600;
 }/*# sourceMappingURL=style.css.map */
+.footer-navigation ul li{
+    font-size: 1rem;
+    padding: 5px 0px;
+}
+.username{
+    display: inline-block;
+    line-height: 50px;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    color: black
+}

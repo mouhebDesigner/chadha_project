@@ -25,7 +25,8 @@ class User extends Authenticatable
         "role",
         "numtel",
         "city",
-        "codePostal"
+        "codePostal",
+        "car_photo"
     ];
 
     /**

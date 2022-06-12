@@ -68,7 +68,7 @@ class TrajetController extends Controller
      */
     public function show(Trajet $trajet)
     {
-        $passagers = $trajet->reservations()->get();
+        $passagers = $trajet->reservations()->where('status', 'accepter')->get();
 
 
         return view('admin.trajets.show', compact('passagers'));

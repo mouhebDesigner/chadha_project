@@ -80,17 +80,28 @@
                                                             <td>{{ $reservation->email }}</td>
                                                             <td>{{ $reservation->numtel }}</td>
                                                             <td>{{ $reservation->pivot->status }}</td>
+                                                            @if($reservation->pivot->status == "attente")
                                                             <td>
+
                                                                 <div class="d-flex justify-content-around">
-                                                                    <button type="submit" style="width:max-content; padding: 10px 10px; line-height: 10px" class="btn-delete delete-confirm" data-model="trajet" title="Supprimer trajet" data-url="{{ route('conducteur.trajets.destroy', ['trajet' => $trajet]) }}" >
+                                                                    <button type="submit" style="width:max-content; padding: 10px 10px; line-height: 10px" class="btn-delete accepter-confirm" data-model="réservation" title="Accepter réservation" data-url="{{ route('conducteur.reservations.accepter', ['reservation' => $reservation->pivot->id]) }}" >
                                                                         Accepter
                                                                     </button>
-                                                                    <a href="{{ route('conducteur.trajets.edit', ['trajet' =>$trajet]) }}" style="width:  max-content; padding: 10px 10px" data-model="trajet" title="Modifier trajet" class="edit-confirm btn-edit">
+                                                                    <a href="javascript:void(0)" data-url="{{ route('conducteur.reservations.refuser', ['reservation' =>$reservation->pivot->id]) }}" style="width:  max-content; padding: 10px 10px" data-model="réservation" title="Réfuser réservation" class="refuser-confirm btn-edit">
                                                                         Refuser
                                                                     </a>
                                                                     
                                                                 </div>
                                                             </td>
+                                                            @else 
+                                                            <td>
+                                                                @if($reservation->pivot->status == "accepter")
+                                                                    <span style="color: green" >Déjà accepté</span>
+                                                                @else 
+                                                                    <span style="color: red" >Déjà refusé</span>
+                                                                @endif
+                                                            </td>
+                                                            @endif
                                                         </tr>
                                                         @endforeach
                                                     @endforeach

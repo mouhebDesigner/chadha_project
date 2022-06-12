@@ -70,6 +70,14 @@
                                     <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                        <label for="nbr_passager_max">Nombre de passager</label>
+                                    <input type="number" class="form-control" name="nbr_passager_max" value="{{ old('nbr_passager_max') }}"
+                                        id="nbr_passager_max" placeholder="Saisir nombre de passager">
+                                    @error('nbr_passager_max')
+                                    <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
                             <!-- /.card-body -->
 

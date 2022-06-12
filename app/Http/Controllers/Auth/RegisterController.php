@@ -90,6 +90,7 @@ class RegisterController extends Controller
                 'codePostal' => $data['codePostal'],
                 'role' => $data['role'],
                 'email' => $data['email'],
+                'car_photo' => $data['car_photo']->store('images'),
                 'password' => Hash::make($data['password']),
             ]);
         }

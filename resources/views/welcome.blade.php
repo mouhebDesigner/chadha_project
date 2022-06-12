@@ -220,55 +220,5 @@
     </div>
 </div>
 
-<div class="div-padding blog-div">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <h2 class="div-title text-center">Our Blog</h2>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-4 col-sm-6">
-                <div class="single-blog-item">
-                    <div class="blog-img">
-                        <img src="assets/images/blog/1.jpg" alt="">
-                    </div>
-                    <div class="blog-text">
-                        <h4 class="blog-heading">Pellentesque et finibus lacus, vitae
-                            malesuada tortor.</h4>
-                        <p class="blog-time">june 13, 2021</p>
-                        <a href="#" class="button button-dark tiny">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <div class="single-blog-item">
-                    <div class="blog-img">
-                        <img src="assets/images/blog/2.jpg" alt="">
-                    </div>
-                    <div class="blog-text">
-                        <h4 class="blog-heading">Pellentesque et finibus lacus, vitae
-                            malesuada tortor.</h4>
-                        <p class="blog-time">june 13, 2021</p>
-                        <a href="#" class="button button-dark tiny">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 offset-lg-0 col-sm-6 offset-sm-3">
-                <div class="single-blog-item">
-                    <div class="blog-img">
-                        <img src="assets/images/blog/3.jpg" alt="">
-                    </div>
-                    <div class="blog-text">
-                        <h4 class="blog-heading">Pellentesque et finibus lacus, vitae
-                            malesuada tortor.</h4>
-                        <p class="blog-time">june 13, 2021</p>
-                        <a href="#" class="button button-dark tiny">Read More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

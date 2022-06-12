@@ -1,11 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\Admin\TrajetController;
 use App\Http\Controllers\Admin\PassagerController;
 use App\Http\Controllers\Admin\ConducteurController;
+use App\Http\Controllers\ReservationClientController;
+use App\Http\Controllers\TrajetController as TrajetControllerFront;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +34,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::prefix('conducteur')->name('conducteur.')->group(function () {
     Route::resource('trajets', TrajetController::class);
     Route::get('reservations', [ReservationController::class, 'index']);
+    Route::put('reservations/{reservation}/accepter', [ReservationController::class, 'accepter'])->name('reservations.accepter');
+    Route::put('reservations/{reservation}/refuser', [ReservationController::class, 'refuser'])->name('reservations.refuser');
+
     Route::get('users', [UserController::class, 'index']);
 });
+Route::get('trajets', [TrajetControllerFront::class, 'index']);
+Route::get('reserver/{trajet_id}', [ReservationClientController::class, 'create']);
+Route::post('reserver/', [ReservationClientController::class, 'store'])->name('reserver');
+Route::resource('profile', ProfileController::class)->only('index', 'update')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

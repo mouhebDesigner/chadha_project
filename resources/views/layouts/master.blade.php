@@ -24,7 +24,7 @@
     </style>
 </head>
 
-<body class="theme-1"  oncontextmenu="return false">
+<body class="theme-1">
 
     @include('includes.header')
     @yield('content')

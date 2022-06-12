@@ -139,7 +139,7 @@
                             @if ((old('role') == "conducteur"))
                                 active
                             @endif" id="conducteur">
-                            <form class="mb-4" action="register" method="post">
+                            <form class="mb-4" action="register" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="role" value="conducteur">
                                 <div class="form-floating">
@@ -147,12 +147,10 @@
                                         @if(old('role') == "conducteur")
                                         value="{{ old('nom') }}"
                                         @endif
-                                        
                                         name="nom" id="nom"
                                         placeholder="Saisir votre nom">
                                     <label for="nom">Nom</label>
                                     @if (old('role') == "conducteur")
-                                    
                                         @error('nom')
                                         <p class="invalid-feedback d-block">{{ $message }}</p>
                                         @enderror
@@ -163,12 +161,10 @@
                                         @if(old('role') == "conducteur")
                                         value="{{ old('prenom') }}"
                                         @endif
-                                        
                                         name="prenom" id="prenom"
                                         placeholder="Saisir votre nom">
                                     <label for="prenom">Prénom</label>
                                     @if (old('role') == "conducteur")
-                                    
                                         @error('prenom')
                                         <p class="invalid-feedback d-block">{{ $message }}</p>
                                         @enderror
@@ -233,6 +229,22 @@
                                     @if (old('role') == "conducteur")
                                     
                                         @error('codePostal')
+                                        <p class="invalid-feedback d-block">{{ $message }}</p>
+                                        @enderror
+                                    @endif
+                                </div>
+                                <div class="form-floating">
+                                    <input type="file" class="form-control" 
+                                        @if(old('role') == "conducteur")
+                                        value="{{ old('car_photo') }}"
+                                        @endif
+                                        
+                                        name="car_photo" id="car_photo"
+                                        placeholder="Saisir code postal">
+                                    <label for="car_photo">Image de voiture</label>
+                                    @if (old('role') == "conducteur")
+                                    
+                                        @error('car_photo')
                                         <p class="invalid-feedback d-block">{{ $message }}</p>
                                         @enderror
                                     @endif

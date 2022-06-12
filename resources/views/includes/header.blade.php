@@ -8,29 +8,39 @@
                             <a href="index.html"><img src="assets/images/logo-main.png" alt=""></a>
                         </div>
                         <div class="search-bar">
-                            <form class="form">
-                                <span class="icon icon-left"><i class="fas fa-map-marker-alt"></i></span>
-                                <input class="form-control" type="search" name="search-bar"
-                                    placeholder="Tell us your location" id="search-bar">
-                                <button class="button button-dark" type="submit"><img
-                                        src="assets/images/arrow-shape.png" alt=""></button>
-                            </form>
-
+                            <a href="#" style="color: black">Tel: +xxx xx xxx xxx</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
+                    @guest
                     <div class="header__upper--right">
                         <nav class="navigation">
                             <ul>
-                                <li><a href="ride-with-cabgo.html">Ride</a></li>
-                                <li><a href="my-driver-dashboard.html">Drive</a></li>
-                                <li><a href="contact-us.html">Help</a></li>
-                                <li><a href="{{ url('login') }}">Sign in</a></li>
+                                <li><a href="{{ url('login') }}">Se connecter</a></li>
                             </ul>
                         </nav>
-                        <a href="ride-with-cabgo.html" class="button button-dark big">Ride with Carrgo</a>
+                        <a href="{{ url('register') }}" class="button button-dark big">S'inscrire</a>
                     </div>
+                    @else 
+                    <div class="header__upper--right">
+                        <a href="{{ url('profile') }}" class="username">
+                            {{ Auth::user()->nom }}
+                            {{ Auth::user()->prenom }}
+                        </a>
+                        
+                        <a class="button button-dark big" style="color: white" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Déconnecter') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form> 
+                    </div>
+
+                    @endif
                 </div>
             </div>
         </div>
@@ -50,37 +60,27 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto">
                                 <li class="nav-item dropdown active">
-                                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button"
-                                        aria-expanded="false" href="index.html"><i class="fas fa-home"></i>Home <span
-                                            class="sr-only">(current)</span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="index-1.html">Home 2</a></li>
-
-                                    </ul>
+                                    <a class="nav-link" data-bs-toggle="dropdown" role="button"
+                                        aria-expanded="false" href="index.html"><i class="fas fa-home"></i>Acceuil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('trajets') }}"><i class="fas fa-cube"></i>Trajets</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="about.html"><i
-                                            class="fas fa-exclamation-circle"></i>About</a>
+                                            class="fas fa-exclamation-circle"></i>A propos</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="our-services.html"><i class="fas fa-cog"></i>Our
-                                        Services</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="our-vehicles.html"><i class="fas fa-taxi"></i>Our
-                                        Vehicles</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="packages.html"><i class="fas fa-cube"></i>Packages</a>
-                                </li>
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact-us.html"><i
                                             class="fas fa-map-marker-alt"></i>Contacts</a>
                                 </li>
                             </ul>
+                            @guest
                             <div class="my-2 my-lg-0">
-                                <a href="{{ url('register') }}" class="button button-light big">Devenir conducteur</a>
+                                <a href="{{ route('conducteur.trajets.create') }}" class="button button-light big">Publier un trajet</a>
                             </div>
+                            @endif
                         </div>
                     </nav>
                 </div>
