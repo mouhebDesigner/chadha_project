@@ -24,7 +24,6 @@ class CreateUsersTable extends Migration
             $table->biginteger('numtel');
             $table->string('city')->nullable();
             $table->integer('codePostal')->nullable();
-            $table->text('photo')->nullable();
             $table->string('car_photo')->nullable();
             $table->string('photo')->nullable();
             $table->boolean('approuver')->nullable();
