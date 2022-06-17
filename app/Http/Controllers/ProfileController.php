@@ -7,7 +7,8 @@ use Auth;
 class ProfileController extends Controller
 {
     public function index(){
-        return view('profile');
+        $reservations = Auth::user()->reservations()->get();
+        return view('profile', compact('reservations'));
     }
 
     public function update(Request $request){

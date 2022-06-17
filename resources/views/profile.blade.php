@@ -123,8 +123,52 @@
                                         <h4>Mes réservations</h4>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    
+                                <div class="row small-div">
+                                    <div class="col-lg-12">
+                                        <div class="total-earning-table table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Source
+                                                        </th>
+                                                        <th>
+                                                            Destination
+                                                        </th>
+                                                        <th>
+                                                            Nom de passager
+                                                        </th>
+                                                        <th>
+                                                            Email
+                                                        </th>
+                                                        <th>
+                                                            Téléphone
+                                                        </th>
+                                                        <th>
+                                                            Status
+                                                        </th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                            @foreach($reservations as $reservation)
+                                                            <tr>
+                                                                <td>{{ $reservation->source }}</td>
+                                                                <td>{{ $reservation->destination }}</td>
+                                                                <td>{{ $reservation->user->nom }} {{ $reservation->user->prenom }}</td>
+                                                                <td>{{ $reservation->user->email }}</td>
+                                                                <td>{{ $reservation->user->numtel }}</td>
+                                                                <td>
+                                                                    {{ $reservation->pivot->status }}
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

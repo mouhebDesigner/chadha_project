@@ -52,9 +52,11 @@
                                         <td>{{ $user->numtel }}</td>
                                         <td>
                                             <div class="d-flex justify-content-between">
+                                                @if($user->approuver == null)
                                                 <a href="{{ url('admin/user/'.$user->id.'/approuver') }}" class="btn btn-success"  onclick="
                                                             return confirm('Voulez-vous approuver cet utilisateur');
                                                         ">Approuver</a>
+                                                @endif
                                                 <form action="{{ url('admin/user/'.$user->id) }}" method='post'>
                                                     @csrf
                                                     @method('delete')

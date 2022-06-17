@@ -67,13 +67,7 @@
                                     <a class="nav-link" href="{{ url('trajets') }}"><i class="fas fa-cube"></i>Trajets</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="about.html"><i
-                                            class="fas fa-exclamation-circle"></i>A propos</a>
-                                </li>
-                                
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact-us.html"><i
-                                            class="fas fa-map-marker-alt"></i>Contacts</a>
+                                    <a class="nav-link" href="{{ route('contacts.index') }}"><i class="fas fa-cube"></i>Contacts</a>
                                 </li>
                             </ul>
                             @guest

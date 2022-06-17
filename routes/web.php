@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ReservationController;
@@ -30,6 +31,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('conducteurs', [ConducteurController::class, 'index']);
     Route::resource('trajets', TrajetController::class)->only('index', 'show');
     Route::get('users', [UserController::class, 'index']);
+    Route::get('user/{id}/approuver', [UserController::class, 'approuver']);
+    Route::delete('user/{id}', [UserController::class, 'destroy']);
 });
 Route::prefix('conducteur')->name('conducteur.')->group(function () {
     Route::resource('trajets', TrajetController::class);
@@ -43,6 +46,9 @@ Route::get('trajets', [TrajetControllerFront::class, 'index']);
 Route::get('reserver/{trajet_id}', [ReservationClientController::class, 'create']);
 Route::post('reserver/', [ReservationClientController::class, 'store'])->name('reserver');
 Route::resource('profile', ProfileController::class)->only('index', 'update')->middleware('auth');
+Route::get('/contacts', [ContactController::class,'index'])->name('contacts.index');
+Route::post('/contacts', [ContactController::class,'store'])->name('contacts.store');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

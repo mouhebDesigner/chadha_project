@@ -2,7 +2,7 @@
 <div class="row">
     
     <div class="col-12 col-sm-6 col-md-3">
-      <a href="{{ url('admin/passagers') }}" class="info-box">
+      <a href="{{ url('conducteur/reservations') }}" class="info-box">
         <span class="info-box-icon bg-info elevation-1">
         <i class="nav-icon fas fa-book"></i>
         </span>
@@ -20,11 +20,10 @@
       <!-- /.info-box -->
     </div>
     <div class="col-12 col-sm-6 col-md-3">
-      <a href="{{ url('admin/trajets') }}" class="info-box">
+      <a href="{{ url('conducteur/trajets') }}" class="info-box">
         <span class="info-box-icon bg-info elevation-1">
           <i class="nav-icon fas fa-book"></i>
         </span>
-
         <div class="info-box-content">
           <span class="info-box-text text-dark">
               Trajets

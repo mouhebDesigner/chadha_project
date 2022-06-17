@@ -60,7 +60,7 @@ class User extends Authenticatable
     }
 
     public function reservations(){
-        return $this->belongsToMany(Trajet::class, 'participants', 'user_id', 'trajet_id');
+        return $this->belongsToMany(Trajet::class, 'participants', 'user_id', 'trajet_id')->withPivot('status');
     }
     
     public function reservationCount(){
